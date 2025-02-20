@@ -21,11 +21,11 @@ private final UserService userService;
     }
 
     @GetMapping
-    public String userProfile(Principal principal, Model model) {
+    public String getUserProfile(Principal principal, Model model) {
     String username = principal.getName();
 
-    model.addAttribute("user", userService.findUserByUsername(username));
-    model.addAttribute("role", userService.findUserByUsername(username).getRoles());
+    model.addAttribute("user", userService.getUserByUsername(username));
+    model.addAttribute("role", userService.getUserByUsername(username).getRoles());
     return "user/profile";
     }
 }

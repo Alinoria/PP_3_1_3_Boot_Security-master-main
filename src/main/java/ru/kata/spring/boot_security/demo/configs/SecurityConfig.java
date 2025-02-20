@@ -47,6 +47,4 @@ public class SecurityConfig {
     public HiddenHttpMethodFilter hiddenHttpMethodFilter() {
         return new HiddenHttpMethodFilter();
     }
-
-
 }

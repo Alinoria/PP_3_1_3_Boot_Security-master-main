@@ -26,10 +26,10 @@ public class AdminController {
     }
 
     @GetMapping
-    public String showAllUsers(Model model, @AuthenticationPrincipal User authenticatedUser) {
-        model.addAttribute("users", userService.showAllUsers());
+    public String getAllUsers(Model model, @AuthenticationPrincipal User authenticatedUser) {
+        model.addAttribute("users", userService.getAllUsersAllUsers());
         model.addAttribute("roles", roleService.getAllRoles());
-        model.addAttribute("user", userService.showUserById(authenticatedUser.getId()));
+        model.addAttribute("user", userService.getUserById(authenticatedUser.getId()));
         return "admin/user-list";
     }
 
@@ -49,7 +49,7 @@ public class AdminController {
 
     @GetMapping("/edit_user/{id}")
     public String editUser(@PathVariable("id") Long id, Model model) {
-        model.addAttribute("user", userService.showUserById(id));
+        model.addAttribute("user", userService.getUserById(id));
         model.addAttribute("roles", roleService.getAllRoles());
         return "redirect:/admin";
     }
@@ -73,5 +73,4 @@ public class AdminController {
         userService.deleteUserById(id);
         return "redirect:/admin";
     }
-
 }
